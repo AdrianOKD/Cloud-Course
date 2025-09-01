@@ -1,3 +1,4 @@
+using System.Net;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
@@ -6,6 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace My.Cloud.Functions;
 
+//Todo Read up on HttpResultsAttribute. Can ignore for now.
 public class HttpCloud
 {
     private readonly ILogger<HttpCloud> _logger;
@@ -16,12 +18,26 @@ public class HttpCloud
     }
 
     [Function("HttpCloud")]
-    public IActionResult Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req
+    public static MultiResponse Run(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req,
+        FunctionContext executionContext
     )
     {
-        _logger.LogInformation("C# HTTP trigger function processed a request.");
-        return new OkObjectResult("Welcome to Azure Functions!");
+        var logger = executionContext.GetLogger("HttpExample");
+        logger.LogInformation("C# HTTP trigger function processed a request.");
+
+        var message = "Welcome to Azure Functions!";
+
+        var response = req.CreateResponse(HttpStatusCode.OK);
+        response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
+        response.WriteStringAsync(message);
+
+        // Return a response to both HTTP trigger and Azure Cosmos DB output binding.
+        return new MultiResponse()
+        {
+            Document = new MyDocument { id = System.Guid.NewGuid().ToString(), message = message },
+            HttpResponse = response,
+        };
     }
 }
 
@@ -30,7 +46,7 @@ public class MultiResponse
     [CosmosDBOutput(
         "my-database",
         "my-container",
-        Connection = "CosmosDbConnectionSetting",
+        Connection = "CosmosDbConnectionString",
         CreateIfNotExists = true
     )]
     public MyDocument Document { get; set; }
