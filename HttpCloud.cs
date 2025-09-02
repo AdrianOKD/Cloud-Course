@@ -1,5 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.Net;
+using System.Text.Json.Nodes;
+using System.Threading.Tasks;
+using Google.Protobuf;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
@@ -19,16 +22,20 @@ public class HttpCloud
     }
 
     [Function("HttpCloud")]
-    public MultiResponse Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req,
-        FunctionContext executionContext
+    public async Task<MultiResponse> Run(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req
     )
     {
+        string body = await req.ReadAsStringAsync();
+
         _logger.LogInformation("C# HTTP trigger function processed a request.");
 
-        string name = "";
+        JsonNode data = JsonNode.Parse(body);
 
-        string email = "";
+        string name = data["name"].ToString();
+
+        string email = data["email"].ToString();
+        //Todo om inget namn eller mail är givet, felmeddelande och hantera i frontend.
 
         var message = $"Welcome to Azure Functions!";
 
@@ -66,9 +73,7 @@ public class MultiResponse
 public class Visitor
 {
     public string Id { get; set; }
-
     public string Name { get; set; }
-
     public string Email { get; set; }
     public string Message { get; set; }
 }
