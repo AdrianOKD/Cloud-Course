@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Google.Protobuf;
 using Microsoft.AspNetCore.Http;
@@ -51,12 +52,11 @@ public class HttpCloud
         response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
         response.WriteStringAsync(message);
 
-        // Return a response to both HTTP trigger and Azure Cosmos DB output binding.
         return new MultiResponse()
         {
             Document = new Visitor
             {
-                id = System.Guid.NewGuid().ToString(),
+                Id = System.Guid.NewGuid().ToString(),
                 Name = name,
                 Email = email,
                 Message = message,
@@ -80,7 +80,8 @@ public class MultiResponse
 
 public class Visitor
 {
-    public string id { get; set; }
+    [JsonPropertyName("id")]
+    public string Id { get; set; }
     public string Name { get; set; }
     public string Email { get; set; }
     public string Message { get; set; }
