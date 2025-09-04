@@ -1,0 +1,18 @@
+meta {
+  name: New Visitor
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:7071/api/HttpCloud
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Adrian",
+    "email": "Grisstjärna@gmail.com"
+  }
+}
