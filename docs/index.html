@@ -1,11 +1,9 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <!-- <meta charset="UTF-8" />
-    <meta name="viewport" content="with=device-with, initial-scale1.0" />
-    <script defer type="module" src="/docs/script.js" /> -->
-
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
@@ -14,15 +12,16 @@
             <h2>Please enter name and email to register</h2>
             <form id="registerPerson">
                 <label for="name">Name (4 to 16 characters):</label>
-                <input type="text" id="name" name="name" placeholder="John Doe" minlength="4" maxlength="16"
-                    size="10" required />
+                <input type="text" id="name" name="name" placeholder="John Doe" minlength="4" maxlength="16" size="20"
+                required />
                 <label for="email">Email:</label>
-                <input type="email" id="email" placeholder="Something@example.com" size="10" required />
-                <button type="submit" class="submitButton"> Submit </button>
+                <input type="email" id="email" name="email" placeholder="Something@example.com" size="20" required />
+                <button type="submit" id="submitButton"> Submit </button>
             </form>
-
+            
         </main>
     </div>
 </body>
 
+<script src="script.js"></script>
 </html>

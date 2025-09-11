@@ -1,17 +1,15 @@
-using System.ComponentModel.DataAnnotations;
 using System.Net;
+using System.Net.Mail;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using Google.Protobuf;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 
 namespace My.Cloud.Functions;
 
+//EmailAddressAttribute
+//MailAddress
 //Todo Read up on HttpResultsAttribute. Can ignore for now.
 public class HttpCloud
 {
@@ -27,7 +25,6 @@ public class HttpCloud
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req
     )
     {
-        //string body = await new StreamReader(req.Body).ReadToEndAsync();
         string body = await req.ReadAsStringAsync();
         _logger.LogInformation("Bärjar läsa body");
 
@@ -37,7 +34,6 @@ public class HttpCloud
         _logger.LogInformation("parsa body.");
 
         string? name = data?["name"]?.ToString();
-
         _logger.LogInformation("Hämta namn.");
 
         string? email = data?["email"]?.ToString();
