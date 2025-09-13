@@ -28,9 +28,20 @@ public class HttpCloud
         string? body = await req.ReadAsStringAsync();
 
         JsonNode? data = JsonNode.Parse(body);
+        if (data == null)
+        {
+            throw new ArgumentNullException();
+        }
         string? name = data?["name"]?.ToString();
-
+        if (name == null)
+        {
+            throw new ArgumentNullException("name is required");
+        }
         string? email = data?["email"]?.ToString();
+        if (email == null)
+        {
+            throw new ArgumentNullException("email is required");
+        }
 
         //Todo om inget namn eller mail är givet, felmeddelande och hantera i frontend.
 

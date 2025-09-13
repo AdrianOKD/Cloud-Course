@@ -11,7 +11,6 @@ registerPerson.addEventListener("submit", async (event) => {
     if (email == null) {
         console.log("its null")
     }
-    console.log(`${name} , ${email}`);
     fetch('https://mycloudfunctions.azurewebsites.net/api/httpcloud', {
         method: 'POST',
         headers: {
@@ -28,7 +27,6 @@ registerPerson.addEventListener("submit", async (event) => {
         else {
             console.log("Not Registered")
         }
-
     });
 
 });
