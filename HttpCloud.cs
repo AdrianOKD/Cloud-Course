@@ -33,20 +33,17 @@ public class HttpCloud
         }
 
         JsonNode? data = JsonNode.Parse(body);
-
         string? name = data?["name"]?.ToString();
 
         string? email = data?["email"]?.ToString();
 
-        _logger.LogInformation($"Name: '{name}', Email: '{email}'");
         //Todo om inget namn eller mail är givet, felmeddelande och hantera i frontend.
 
         var message = $"Welcome to Azure Functions!";
 
         var response = req.CreateResponse(HttpStatusCode.OK);
-        _logger.LogInformation("hämta response");
         response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
-        response.WriteStringAsync(message);
+        await response.WriteStringAsync(message);
         return new MultiResponse()
         {
             Document = new Visitor
