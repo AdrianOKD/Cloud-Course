@@ -12,7 +12,7 @@ registerPerson.addEventListener("submit", async (event) => {
         console.log("its null")
     }
     console.log(`${name} , ${email}`);
-    fetch('https://mycloudfunctions.azurewebsites.net/api/httpcloud', {
+    fetch('https://mycloudfunctions.azurewebsites.net/api/HttpCloud', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
