@@ -22,7 +22,7 @@ public class HttpCloud
 
     [Function("HttpCloud")]
     public async Task<MultiResponse> Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req
+        [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequestData req
     )
     {
         string? body = await req.ReadAsStringAsync();
