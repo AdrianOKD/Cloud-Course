@@ -25,19 +25,19 @@ public class HttpCloud
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req
     )
     {
-        string body = await req.ReadAsStringAsync();
-        _logger.LogInformation("Bärjar läsa body");
+        string? body = await req.ReadAsStringAsync();
 
-        _logger.LogInformation("C# HTTP trigger function processed a request.");
+        if (body == null)
+        {
+            throw new Exception();
+        }
 
-        JsonNode data = JsonNode.Parse(body);
-        _logger.LogInformation("parsa body.");
+        JsonNode? data = JsonNode.Parse(body);
 
         string? name = data?["name"]?.ToString();
-        _logger.LogInformation("Hämta namn.");
 
         string? email = data?["email"]?.ToString();
-        _logger.LogInformation("hämta email");
+
         _logger.LogInformation($"Name: '{name}', Email: '{email}'");
         //Todo om inget namn eller mail är givet, felmeddelande och hantera i frontend.
 
@@ -47,7 +47,6 @@ public class HttpCloud
         _logger.LogInformation("hämta response");
         response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
         response.WriteStringAsync(message);
-
         return new MultiResponse()
         {
             Document = new Visitor
@@ -71,14 +70,7 @@ public class MultiResponse
         CreateIfNotExists = true
     )]
     public Visitor Document { get; set; }
-    public HttpResponseData HttpResponse { get; set; }
-}
 
-public class Visitor
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; }
-    public string Name { get; set; }
-    public string Email { get; set; }
-    public string Message { get; set; }
+    [HttpResult]
+    public HttpResponseData HttpResponse { get; set; }
 }
