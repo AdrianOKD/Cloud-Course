@@ -24,7 +24,6 @@ registerPerson.addEventListener("submit", async (event) => {
             console.log("Registered")
             form.reset();
             location.reload()
-
         }
         else {
             console.log("Not Registered")
