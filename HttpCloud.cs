@@ -27,11 +27,6 @@ public class HttpCloud
     {
         string? body = await req.ReadAsStringAsync();
 
-        if (body == null)
-        {
-            throw new Exception();
-        }
-
         JsonNode? data = JsonNode.Parse(body);
         string? name = data?["name"]?.ToString();
 
