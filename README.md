@@ -10,8 +10,8 @@ An in-depth paragraph about your project and overview of use.
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+* Dotnet 8.0
+* Windows 10/11
 
 ### Installing
 
@@ -35,22 +35,11 @@ command to run if program contains helper info
 
 ## Authors
 
-Contributors names and contact info
-
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
-
-## Version History
-
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
+Adrian Dahl
 
 ## License
 
-This project is licensed under the MIT-License - see the LICENSE.md file for details
+This project is licensed under the MIT-License.
 
 ## Acknowledgments
 
