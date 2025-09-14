@@ -34,27 +34,35 @@ public class HttpCloud
             {
                 throw new ArgumentNullException("The body is null");
             }
-
             JsonNode? data = JsonNode.Parse(body);
             if (data == null)
             {
                 throw new ArgumentNullException();
             }
+            //extracts and validate required fields in visitor.
             string? name = data?["name"]?.ToString();
             if (name == null)
             {
                 throw new ArgumentNullException("name is required");
             }
-            var emailChecker = new EmailAddressAttribute();
+
             string? email = data?["email"]?.ToString();
-            bool isValid = emailChecker.IsValid(email);
+
             if (email == null)
             {
                 throw new ArgumentNullException("email is required");
             }
+            //Validate emails format.
+            var emailChecker = new EmailAddressAttribute();
+            bool isValid = emailChecker.IsValid(email);
+            if (!isValid)
+            {
+                throw new ArgumentException("Email format is not valid");
+            }
 
-            var dateTime = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
-            var time = dateTime.ToString();
+            //adds time and date for easier sorting in db
+
+            string dateTime = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
 
             var message = $"Welcome to Azure Functions!";
 
@@ -68,7 +76,7 @@ public class HttpCloud
                     Id = System.Guid.NewGuid().ToString(),
                     Name = name,
                     Email = email,
-                    Time = time,
+                    Time = dateTime,
                     Message = message,
                 },
                 HttpResponse = response,
@@ -79,11 +87,7 @@ public class HttpCloud
             _logger.LogError(e, "Error processing request");
             var errorResponse = req.CreateResponse(HttpStatusCode.BadRequest);
             await errorResponse.WriteStringAsync($"Error: {e.Message}");
-            return new MultiResponse()
-            {
-                Document = null!, // or handle as needed
-                HttpResponse = errorResponse,
-            };
+            return new MultiResponse() { Document = null!, HttpResponse = errorResponse };
         }
     }
 
