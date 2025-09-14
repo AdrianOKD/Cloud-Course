@@ -65,7 +65,7 @@ public class HttpCloud
 
             string dateTime = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
 
-            var message = $"Welcome to Azure Functions!";
+            var message = $"Welcome {name}!";
 
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
