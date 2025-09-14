@@ -10,7 +10,7 @@ An in-depth paragraph about your project and overview of use.
 
 ### Dependencies
 
-* Dotnet 8.0
+* .Net 8.0
 * Windows 10/11
 
 ### Installing
