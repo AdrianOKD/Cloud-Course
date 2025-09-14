@@ -1,5 +1,6 @@
 console.log("Script loaded successfully");
 
+
 const registerPerson = document.getElementById("registerPerson");
 registerPerson.addEventListener("submit", async (event) => {
     console.log("Form submitted!");
