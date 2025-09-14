@@ -13,9 +13,13 @@ An in-depth paragraph about your project and overview of use.
 * .NET 8.0
 * Windows 10/11
 
-### Installing
-
-Git clone: Git clone https://github.com/AdrianOKD/Cloud-Course.git
+### How to run
+1. **Frontend**
+   Visit my github pages site:
+   [My cloud cours program](https://adrianokd.github.io/Cloud-Course)
+2.**Backend**
+   The site is already running and is connected to my Azure Functions backend.
+   No need to clone repoistory or configure any code to try it out.
 
 ### Executing program
 
