@@ -1,5 +1,4 @@
 # Cloud-Course
-# Project Title
 
 Simple overview of use/purpose.
 
