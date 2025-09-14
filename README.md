@@ -16,12 +16,53 @@ An in-depth paragraph about your project and overview of use.
 ### How to run
 
  1. **Frontend**
+```
     Visit my github pages site:
     [My cloud cours program](https://adrianokd.github.io/Cloud-Course)
-
+```
  2.**Backend**
+ ```
     The site is already running and is connected to my Azure Functions backend.
     No need to clone repoistory or configure any code to try it out.
+```
+
+### For Local Development (Optional)
+
+If you want to run or modify the code locally, follow these steps:
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/AdrianOKD/Cloud-Course.git
+   ```
+
+2. Install .NET 8.0 SDK and Azure Tools for VS Code.
+
+3. Set up your own Azure resources (Function App, Cosmos DB, etc.)
+ ```
+   Add your connection strings to `local.settings.json`.
+
+   * Example:
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "AzureWebJobsStorage": "<your-azure-storage-connection-string>",
+    "CosmosDbConnectionString": "<your-cosmos-db-connection-string>"
+  },
+  "Host": {
+    "CORS": "*"
+  }
+}
+ ```
+4. Run the backend locally:
+   ```
+   func start
+   ```
+
+5. Open `docs/index.html` in your browser for the frontend.
+
+---
+
 
 ### Executing program
 
