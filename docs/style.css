@@ -1,11 +1,35 @@
 #page-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    z-index: 1001;
+    max-width: 500px;
 
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: rgb(175, 162, 162);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#form-group1 {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#registerPerson {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#form-group2 {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 #submitButton {
@@ -18,11 +42,18 @@
 
 }
 
+#submitButton:hover {
+    transform: translateY(+1px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
 #main-container {
-    border: 1px solid black;
-    background-color: darkgray;
-    padding: 20px;
-    margin: 300px;
+
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px black;
+    backdrop-filter: blur(10px);
 }
 
 #form {
