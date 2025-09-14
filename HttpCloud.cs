@@ -76,7 +76,7 @@ public class HttpCloud
                     Id = System.Guid.NewGuid().ToString(),
                     Name = name,
                     Email = email,
-                    Time = dateTime,
+                    VisitorDate = dateTime,
                     Message = message,
                 },
                 HttpResponse = response,
