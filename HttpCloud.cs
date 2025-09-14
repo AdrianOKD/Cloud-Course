@@ -1,10 +1,6 @@
 using System.ComponentModel.DataAnnotations;
-using System.Linq.Expressions;
 using System.Net;
-using System.Net.Mail;
 using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
-using Microsoft.Azure.Cosmos.Linq;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
@@ -32,17 +28,20 @@ public class HttpCloud
             string? body = await req.ReadAsStringAsync();
             if (body == null)
             {
+                _logger.LogWarning("Body was null");
                 throw new ArgumentNullException("The body is null");
             }
             JsonNode? data = JsonNode.Parse(body);
             if (data == null)
             {
-                throw new ArgumentNullException();
+                _logger.LogWarning("Data was null");
+                throw new ArgumentNullException("data is null");
             }
             //extracts and validate required fields in visitor.
             string? name = data?["name"]?.ToString();
             if (name == null)
             {
+                _logger.LogWarning("Name was null");
                 throw new ArgumentNullException("name is required");
             }
 
@@ -50,6 +49,7 @@ public class HttpCloud
 
             if (email == null)
             {
+                _logger.LogWarning("Email was null");
                 throw new ArgumentNullException("email is required");
             }
             //Validate emails format.
@@ -57,6 +57,7 @@ public class HttpCloud
             bool isValid = emailChecker.IsValid(email);
             if (!isValid)
             {
+                _logger.LogWarning("Email was not in valid format");
                 throw new ArgumentException("Email format is not valid");
             }
 

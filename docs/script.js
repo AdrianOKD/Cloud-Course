@@ -9,9 +9,7 @@ registerPerson.addEventListener("submit", async (event) => {
     const data = new FormData(registerPerson)
     const name = data.get("name");
     const email = data.get("email");
-    if (email == null) {
-        console.log("its null")
-    }
+    
     fetch('https://mycloudfunctions.azurewebsites.net/api/httpcloud', {
         method: 'POST',
         headers: {
