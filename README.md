@@ -1,23 +1,26 @@
 # Cloud-Course
 
-A check in web app.
+A simple check-in web application built with Azure cloud services.
 
 ## Description
 
-This is a simple check in web application connected to Azure. 
-It uses github pages as frontend and talks to an azure database via function app.
-It registeres user with name and email, and the time they checked in according to UTC time. 
+This is a simple check in web application connected to Azure.
+It allows users to check in with their name and email.  
+* Frontend: Hosted on Github Pages.
+* Backend: Azure functions for serverless API.
+* Database: Azure Cosmos DB, a NoSQL DB for storage.
 
 ## Getting Started
 
 ### Dependencies
 
-* .NET 8.0
+* .NET 8.0 SDK
 * Windows 10/11
+* Azure Tools for VS Code
 
 🚀### How to run
 
-**Option 1**
+**Option 1: Try directly**
 
  1. **Frontend**
 
@@ -70,12 +73,13 @@ If you want to run or modify the code locally, follow these steps:
 CORS Setup
 For the frontend to communicate with your Azure Function App:
 
-Navigate to your Function App in Azure Portal
-Go to Settings → CORS
-For development: Add *
-For production: Add your GitHub Pages URL: https://yourusername.github.io
+1. Navigate to your Function App in Azure Portal
+2. Go to Settings → CORS
+3. For development: Add *
+4. For production: Add your GitHub Pages URL: https://yourusername.github.io
 
 ⚠️ Security Note: Only use * during development. Always specify exact origins in production.
+
 ## Authors
 
 Adrian Dahl
