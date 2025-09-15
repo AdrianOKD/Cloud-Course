@@ -82,8 +82,8 @@ Adrian Dahl
 This project is licensed under the MIT-License.
 
 ## Acknowledgments
-
-Inspiration, code snippets, etc.
 * [Readme-templet](https://gist.github.com/DomPizzie/7a5ff55ffa9081f2de27c315f5018afc)
+* [Azure Functions Documentation](https://learn.microsoft.com/en-us/azure/azure-functions)
 * [Tutorial Azure/CosmosDB](https://learn.microsoft.com/en-us/azure/azure-functions/how-to-create-function-vs-code?pivots=programming-language-csharp)
 * [W3School](https://www.w3schools.com)
+* [Azure Functions setup tutorial](https://www.youtube.com/watch?v=_9moXcR2Suo)
