@@ -101,5 +101,6 @@ This project is licensed under the MIT-License.
 * [Tutorial Azure/CosmosDB](https://learn.microsoft.com/en-us/azure/azure-functions/how-to-create-function-vs-code?pivots=programming-language-csharp)
 * [W3School](https://www.w3schools.com)
 * [Azure Functions setup tutorial](https://www.youtube.com/watch?v=_9moXcR2Suo)
+* [Fetch tutorial/options](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 
 Formatted with AI
