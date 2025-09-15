@@ -7,8 +7,6 @@ using Microsoft.Extensions.Logging;
 
 namespace My.Cloud.Functions;
 
-//MailAddress
-//Todo Read up on HttpResultsAttribute. Can ignore for now.
 public class HttpCloud
 {
     private readonly ILogger<HttpCloud> _logger;
