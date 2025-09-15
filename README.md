@@ -21,7 +21,7 @@ It allows users to check in with their name and email.
 
 ### 🚀 How to run 
 
-**Option 1: Try directly**
+## 👀 Option 1: Try directly
 
  1. **Frontend**
 
@@ -35,7 +35,7 @@ No need to clone repository or configure any code to try it out.
     
 
 
-### 🪛 Option 2: Local Development  
+## 🪛 Option 2: Local Development  
 
 If you want to run or modify the code locally, follow these steps:
 
