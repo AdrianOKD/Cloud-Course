@@ -4,7 +4,7 @@ Simple overview of use/purpose.
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+This is a simple 
 
 ## Getting Started
 
@@ -58,25 +58,17 @@ If you want to run or modify the code locally, follow these steps:
    ```
    func start
    ```
-
 5. Open `docs/index.html` in your browser for the frontend.
 
 ---
-
-
-### Executing program
-
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
 
 ## Help
 
 Any advise for common problems or issues.
 ```
-command to run if program contains helper info
+To have your frontend able to access your backend in azure you have to open cors in Function app settings and add a
+"*" (without quotation marks). Only use the * when developing, when you have everything set up use your  https://<yourUserName>.github.io 
+to have only your github pages communicate with the function app.
 ```
 
 ## Authors
