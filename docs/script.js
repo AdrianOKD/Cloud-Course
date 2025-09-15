@@ -5,6 +5,7 @@ const registerPerson = document.getElementById("registerPerson");
 registerPerson.addEventListener("submit", (event) => {
     console.log("Form submitted!");
     event.preventDefault();
+    const form = document.getElementById('registerPerson')
     const data = new FormData(registerPerson)
     const name = data.get("name");
     const email = data.get("email");
