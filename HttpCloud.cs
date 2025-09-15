@@ -92,7 +92,7 @@ public class HttpCloud
         catch (Exception e)
         {
             _logger.LogError(e, "Error processing request");
-            var errorResponse = req.CreateResponse(HttpStatusCode.BadRequest);
+            var errorResponse = req.CreateResponse(HttpStatusCode.InternalServerError);
             await errorResponse.WriteStringAsync($"Error: {e.Message}");
             return new MultiResponse() { Document = null!, HttpResponse = errorResponse };
         }

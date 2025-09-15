@@ -10,13 +10,13 @@ registerPerson.addEventListener("submit", async (event) => {
     const name = data.get("name");
     const email = data.get("email");
 
-    fetch('https://mycloudfunctions.azurewebsites.net/api/httpcloud', {
+    await fetch('https://mycloudfunctions.azurewebsites.net/api/httpcloud', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ name: name, email: email })
-    }).then(response => {
+    }).then(async response => {
 
         if (response.ok) {
             console.log("Registered")
@@ -24,8 +24,9 @@ registerPerson.addEventListener("submit", async (event) => {
             alert("Registered!");
         }
         else {
-            console.log("Not Registered")
-            alert("Not registered!");
+            const errorMessage = await response.text();
+            console.log("Not Registered", errorMessage)
+            alert("Not registered!", errorMessage);
         }
     });
 
