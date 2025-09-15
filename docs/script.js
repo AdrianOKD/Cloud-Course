@@ -21,7 +21,7 @@ registerPerson.addEventListener("submit", async (event) => {
         if (response.ok) {
             console.log("Registered")
             form.reset();
-            alert("Registered!");
+            alert(`Welcome ${name}! You are registered!`);
         }
         else {
             const errorMessage = await response.text();
