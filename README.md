@@ -15,7 +15,9 @@ It registeres user with name and email, and the time they checked in according t
 * .NET 8.0
 * Windows 10/11
 
-### How to run
+🚀### How to run
+
+**Option 1**
 
  1. **Frontend**
 
@@ -28,7 +30,7 @@ The site is already running and is connected to my Azure Functions backend.
 No need to clone repoistory or configure any code to try it out.
     
 
-### For Local Development (Optional)
+🪛### Option 2: Local Development 
 
 If you want to run or modify the code locally, follow these steps:
 
@@ -64,15 +66,16 @@ If you want to run or modify the code locally, follow these steps:
 
 ---
 
-## Help
+🔧 Configuration
+CORS Setup
+For the frontend to communicate with your Azure Function App:
 
-Any advise for common problems or issues.
+Navigate to your Function App in Azure Portal
+Go to Settings → CORS
+For development: Add *
+For production: Add your GitHub Pages URL: https://yourusername.github.io
 
-To have your frontend able to access your backend in azure you have to open cors in Function app settings and add a
-"*" (without quotation marks). Only use the * when developing, when you have everything set up use your  https://<yourUserName>.github.io 
-to have only your github pages communicate with the function app.
-
-
+⚠️ Security Note: Only use * during development. Always specify exact origins in production.
 ## Authors
 
 Adrian Dahl
