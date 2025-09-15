@@ -46,7 +46,12 @@ If you want to run or modify the code locally, follow these steps:
 
 2. Install .NET 8.0 SDK and Azure Tools for VS Code.
 
-3. Set up your own Azure resources (Function App, Cosmos DB, etc.)
+3. Run command in terminal to install Cosmos DB package(if you want to use a NoSQL db)
+   ```
+   dotnet add package Microsoft.Azure.Functions.Worker.Extensions.CosmosDB
+   ```
+
+4. Set up your own Azure resources (Function App, Cosmos DB, etc.)
  ```
    Add your connection strings to `local.settings.json`.
 
@@ -63,11 +68,11 @@ If you want to run or modify the code locally, follow these steps:
   }
 }
  ```
-4. Run the backend locally:
+5. Run the backend locally:
    ```
    func start
    ```
-5. Open `docs/index.html` in your browser for the frontend.
+6. Open `docs/index.html` in your browser for the frontend.
 
 ---
 
