@@ -52,7 +52,7 @@ public class HttpCloud
                 _logger.LogWarning("Email was null");
                 throw new ArgumentNullException("email is required");
             }
-            //Validate emails format.
+            //Validate emails format. Only checks if it has an @ and make sure that its not first or last.
             var emailChecker = new EmailAddressAttribute();
             bool isValid = emailChecker.IsValid(email);
             if (!isValid)
@@ -62,7 +62,6 @@ public class HttpCloud
             }
 
             //adds time and date for easier sorting in db
-
             string dateTime = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
 
             var message = $"Welcome {name}!";
@@ -83,6 +82,13 @@ public class HttpCloud
                 HttpResponse = response,
             };
         }
+        catch (ArgumentException ex)
+        {
+            _logger.LogError(ex, "No valid argument provided");
+            var errorResponse = req.CreateResponse(HttpStatusCode.BadRequest);
+            await errorResponse.WriteStringAsync($"Validation error: {ex.Message}");
+            return new MultiResponse() { Document = null!, HttpResponse = errorResponse };
+        }
         catch (Exception e)
         {
             _logger.LogError(e, "Error processing request");
@@ -100,7 +106,7 @@ public class HttpCloud
             Connection = "CosmosDbConnectionString",
             CreateIfNotExists = true
         )]
-        public Visitor Document { get; set; }
+        public Visitor? Document { get; set; }
 
         [HttpResult]
         public required HttpResponseData HttpResponse { get; set; }
