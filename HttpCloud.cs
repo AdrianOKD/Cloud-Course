@@ -64,11 +64,7 @@ public class HttpCloud
             //adds time and date for easier sorting in db
             string dateTime = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
 
-            var message = $"Welcome {name}!";
-
             var response = req.CreateResponse(HttpStatusCode.OK);
-            response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
-            await response.WriteStringAsync(message);
             return new MultiResponse()
             {
                 Document = new Visitor
@@ -77,14 +73,20 @@ public class HttpCloud
                     Name = name,
                     Email = email,
                     VisitorDate = dateTime,
-                    Message = message,
                 },
                 HttpResponse = response,
             };
         }
+        catch (ArgumentNullException ex)
+        {
+            _logger.LogError(ex, "A required field is missing information");
+            var errorResponse = req.CreateResponse(HttpStatusCode.BadRequest);
+            await errorResponse.WriteStringAsync($"Validation error: {ex.Message}");
+            return new MultiResponse() { Document = null!, HttpResponse = errorResponse };
+        }
         catch (ArgumentException ex)
         {
-            _logger.LogError(ex, "No valid argument provided");
+            _logger.LogError(ex, "Invalid format");
             var errorResponse = req.CreateResponse(HttpStatusCode.BadRequest);
             await errorResponse.WriteStringAsync($"Validation error: {ex.Message}");
             return new MultiResponse() { Document = null!, HttpResponse = errorResponse };
