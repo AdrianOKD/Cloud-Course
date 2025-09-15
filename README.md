@@ -18,8 +18,8 @@ It allows users to check in with their name and email.
 * Windows 10/11
 * Azure Tools for VS Code
 
-🚀
-### How to run
+
+### How to run 🚀
 
 **Option 1: Try directly**
 
@@ -34,8 +34,8 @@ The site is already running and is connected to my Azure Functions backend.
 No need to clone repoistory or configure any code to try it out.
     
 
-🪛 
-### Option 2: Local Development 
+
+### Option 2: Local Development 🪛 
 
 If you want to run or modify the code locally, follow these steps:
 
