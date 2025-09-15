@@ -1,32 +1,41 @@
 # Cloud-Course
 
-Simple overview of use/purpose.
+A simple check-in web application built with Azure cloud services.
 
 ## Description
 
-This is a simple 
+This is a simple check in web application connected to Azure.
+It allows users to check in with their name and email.  
+* Frontend: Hosted on Github Pages.
+* Backend: Azure functions for serverless API.
+* Database: Azure Cosmos DB, a NoSQL DB for storage.
 
 ## Getting Started
 
 ### Dependencies
 
-* .NET 8.0
+* .NET 8.0 SDK
 * Windows 10/11
+* Azure Tools for VS Code
 
-### How to run
+
+### 🚀 How to run 
+
+## 👀 Option 1: Try directly
 
  1. **Frontend**
 
     Visit my github pages site:
-    [My cloud cours program](https://adrianokd.github.io/Cloud-Course)
+    [My cloud course program](https://adrianokd.github.io/Cloud-Course)
 
- 2.**Backend**
+ 2. **Backend**
     
 The site is already running and is connected to my Azure Functions backend.
-No need to clone repoistory or configure any code to try it out.
+No need to clone repository or configure any code to try it out.
     
 
-### For Local Development (Optional)
+
+## 🪛 Option 2: Local Development  
 
 If you want to run or modify the code locally, follow these steps:
 
@@ -37,7 +46,12 @@ If you want to run or modify the code locally, follow these steps:
 
 2. Install .NET 8.0 SDK and Azure Tools for VS Code.
 
-3. Set up your own Azure resources (Function App, Cosmos DB, etc.)
+3. Run command in terminal to install Cosmos DB package(if you want to use a NoSQL db)
+   ```
+   dotnet add package Microsoft.Azure.Functions.Worker.Extensions.CosmosDB
+   ```
+
+4. Set up your own Azure resources (Function App, Cosmos DB, etc.)
  ```
    Add your connection strings to `local.settings.json`.
 
@@ -54,22 +68,24 @@ If you want to run or modify the code locally, follow these steps:
   }
 }
  ```
-4. Run the backend locally:
+5. Run the backend locally:
    ```
    func start
    ```
-5. Open `docs/index.html` in your browser for the frontend.
+6. Open `docs/index.html` in your browser for the frontend.
 
 ---
 
-## Help
+## 🔧 Configuration
+### CORS Setup
+For the frontend to communicate with your Azure Function App:
 
-Any advise for common problems or issues.
-```
-To have your frontend able to access your backend in azure you have to open cors in Function app settings and add a
-"*" (without quotation marks). Only use the * when developing, when you have everything set up use your  https://<yourUserName>.github.io 
-to have only your github pages communicate with the function app.
-```
+1. Navigate to your Function App in Azure Portal
+2. Go to Settings → CORS
+3. For development: Add *
+4. For production: Add your GitHub Pages URL: https://yourusername.github.io
+
+⚠️ Security Note: Only use * during development. Always specify exact origins in production.
 
 ## Authors
 
@@ -80,8 +96,11 @@ Adrian Dahl
 This project is licensed under the MIT-License.
 
 ## Acknowledgments
-
-Inspiration, code snippets, etc.
 * [Readme-templet](https://gist.github.com/DomPizzie/7a5ff55ffa9081f2de27c315f5018afc)
+* [Azure Functions Documentation](https://learn.microsoft.com/en-us/azure/azure-functions)
 * [Tutorial Azure/CosmosDB](https://learn.microsoft.com/en-us/azure/azure-functions/how-to-create-function-vs-code?pivots=programming-language-csharp)
 * [W3School](https://www.w3schools.com)
+* [Azure Functions setup tutorial](https://www.youtube.com/watch?v=_9moXcR2Suo)
+* [Fetch tutorial/options](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+
+Formatted with AI
