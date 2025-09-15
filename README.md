@@ -102,5 +102,6 @@ This project is licensed under the MIT-License.
 * [W3School](https://www.w3schools.com)
 * [Azure Functions setup tutorial](https://www.youtube.com/watch?v=_9moXcR2Suo)
 * [Fetch tutorial/options](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+* [Java promise vs. async/await](https://medium.com/@noransaber685/mastering-asynchronous-javascript-from-fetch-to-async-await-a-comprehensive-guide-2fd01a2531b7)
 
 Formatted with AI
