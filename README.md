@@ -1,10 +1,12 @@
 # Cloud-Course
 
-Simple overview of use/purpose.
+A check in web app.
 
 ## Description
 
-This is a simple 
+This is a simple check in web application connected to Azure. 
+It uses github pages as frontend and talks to an azure database via function app.
+It registeres user with name and email, and the time they checked in according to UTC time. 
 
 ## Getting Started
 
@@ -65,11 +67,11 @@ If you want to run or modify the code locally, follow these steps:
 ## Help
 
 Any advise for common problems or issues.
-```
+
 To have your frontend able to access your backend in azure you have to open cors in Function app settings and add a
 "*" (without quotation marks). Only use the * when developing, when you have everything set up use your  https://<yourUserName>.github.io 
 to have only your github pages communicate with the function app.
-```
+
 
 ## Authors
 
